@@ -1,9 +1,9 @@
-import os
+from decouple import config
 from openai import OpenAI
 
 # the newest OpenAI model is "gpt-4o" which was released May 13, 2024.
 # do not change this unless explicitly requested by the user
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+OPENAI_API_KEY = config("OPENAI_API_KEY")
 openai = OpenAI(api_key=OPENAI_API_KEY)
 
 def generate_code_and_tests(prompt, filename):
