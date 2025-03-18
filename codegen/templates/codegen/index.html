@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Generator</title>
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+</head>
+<body>
+    <div class="container py-4">
+        <h1 class="mb-4">AI Code Generator</h1>
+        
+        <div class="card mb-4">
+            <div class="card-body">
+                <form id="generateForm">
+                    <div class="mb-3">
+                        <label for="filename" class="form-label">Filename</label>
+                        <input type="text" class="form-control" id="filename" required 
+                               placeholder="Enter filename (e.g., calculator.py)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="prompt" class="form-label">Prompt</label>
+                        <textarea class="form-control" id="prompt" rows="4" required
+                                  placeholder="Describe what you want the code to do..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="generateBtn">
+                        Generate Code
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div id="results" class="d-none">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Generated Code</h5>
+                </div>
+                <div class="card-body">
+                    <pre><code id="codeOutput" class="language-python"></code></pre>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Generated Tests</h5>
+                </div>
+                <div class="card-body">
+                    <pre><code id="testOutput" class="language-python"></code></pre>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Test Results</h5>
+                </div>
+                <div class="card-body">
+                    <pre id="testResults"></pre>
+                </div>
+            </div>
+        </div>
+
+        <div id="error" class="alert alert-danger d-none" role="alert"></div>
+    </div>
+
+    {% load static %}
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
