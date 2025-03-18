@@ -40,8 +40,8 @@ OPENAI_API_KEY=your_openai_api_key
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd ai-code-generator
+git clone https://github.com/Quitiweb/AICodeCompanion
+cd AICodeCompanion
 ```
 
 2. Install dependencies:

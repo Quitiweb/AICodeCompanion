@@ -1,3 +1,4 @@
+import json
 from decouple import config
 from openai import OpenAI
 
@@ -24,9 +25,12 @@ def generate_code_and_tests(prompt, filename):
             ],
             response_format={"type": "json_object"}
         )
-        
-        result = response.choices[0].message.content
-        return result['code'], result['tests']
-        
+        result = json.loads(response.choices[0].message.content)
+
+        if not isinstance(result, dict) or 'code' not in result or 'tests' not in result:
+            raise ValueError("Invalid response format from OpenAI API")
+
+        return result.get('code', ""), result.get('tests', "")
+
     except Exception as e:
         raise Exception(f"Failed to generate code: {str(e)}")
